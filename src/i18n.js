@@ -17,9 +17,12 @@ i18n.use(initReactI18next).init({
   resources,
   lng: "fr",
   fallbackLng: "fr",
+  returnNull: false,
   interpolation: {
     escapeValue: false
   }
 });
+
+document.documentElement.lang = i18n.language;
 
 export default i18n;

@@ -1,5 +1,14 @@
 {
   "app": {
     "name": "Food Price Monitor"
+  },
+  "language": {
+    "label": "Choose a language"
+  },
+  "footer": {
+    "dataLabel": "Data",
+    "dataSource": "Statistics Canada",
+    "universityProject": "University project — SEG3525",
+    "student": "Joël Normand"
   }
 }

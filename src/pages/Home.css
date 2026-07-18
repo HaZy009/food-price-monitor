@@ -1,0 +1,25 @@
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-block: var(--spacing-5);
+}
+
+.page-container {
+  width: min(100% - 3rem, var(--content-max-width));
+  margin-inline: auto;
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding-block: var(--spacing-4);
+  }
+
+  .page-container {
+    width: min(100% - 2rem, var(--content-max-width));
+  }
+}
