@@ -5,6 +5,37 @@
   "language": {
     "label": "Choisir la langue"
   },
+  "hero": {
+    "eyebrow": "Données alimentaires canadiennes",
+    "title": "Comprendre l’évolution des prix alimentaires au Canada",
+    "description": "Explorez les prix de détail moyens mensuels de certains aliments, comparez les provinces et découvrez les produits ayant connu les plus fortes variations.",
+    "metadata": {
+      "sourceLabel": "Source :",
+      "sourceValue": "Statistique Canada, tableau 18-10-0245-01",
+      "latestDateLabel": "Dernières données :",
+      "latestDateValue": "mai 2026",
+      "frequencyLabel": "Fréquence :",
+      "frequencyValue": "mensuelle"
+    }
+  },
+  "region": {
+    "title": "Région analysée",
+    "label": "Province ou ensemble du Canada",
+    "description": "Les graphiques et les indicateurs seront automatiquement mis à jour pour la région sélectionnée."
+  },
+  "regions": {
+    "canada": "Canada",
+    "newfoundlandAndLabrador": "Terre-Neuve-et-Labrador",
+    "princeEdwardIsland": "Île-du-Prince-Édouard",
+    "novaScotia": "Nouvelle-Écosse",
+    "newBrunswick": "Nouveau-Brunswick",
+    "quebec": "Québec",
+    "ontario": "Ontario",
+    "manitoba": "Manitoba",
+    "saskatchewan": "Saskatchewan",
+    "alberta": "Alberta",
+    "britishColumbia": "Colombie-Britannique"
+  },
   "footer": {
     "dataLabel": "Données",
     "dataSource": "Statistique Canada",

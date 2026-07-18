@@ -5,6 +5,37 @@
   "language": {
     "label": "Choose a language"
   },
+  "hero": {
+    "eyebrow": "Canadian food data",
+    "title": "Understand food price trends across Canada",
+    "description": "Explore monthly average retail prices for selected foods, compare provinces, and discover the products with the largest price changes.",
+    "metadata": {
+      "sourceLabel": "Source:",
+      "sourceValue": "Statistics Canada, Table 18-10-0245-01",
+      "latestDateLabel": "Latest data:",
+      "latestDateValue": "May 2026",
+      "frequencyLabel": "Frequency:",
+      "frequencyValue": "monthly"
+    }
+  },
+  "region": {
+    "title": "Region analyzed",
+    "label": "Province or Canada as a whole",
+    "description": "Charts and indicators will update automatically for the selected region."
+  },
+  "regions": {
+    "canada": "Canada",
+    "newfoundlandAndLabrador": "Newfoundland and Labrador",
+    "princeEdwardIsland": "Prince Edward Island",
+    "novaScotia": "Nova Scotia",
+    "newBrunswick": "New Brunswick",
+    "quebec": "Quebec",
+    "ontario": "Ontario",
+    "manitoba": "Manitoba",
+    "saskatchewan": "Saskatchewan",
+    "alberta": "Alberta",
+    "britishColumbia": "British Columbia"
+  },
   "footer": {
     "dataLabel": "Data",
     "dataSource": "Statistics Canada",
