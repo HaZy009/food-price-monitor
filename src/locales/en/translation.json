@@ -36,6 +36,26 @@
     "alberta": "Alberta",
     "britishColumbia": "British Columbia"
   },
+  "stats": {
+    "sectionLabel": "Summary of selected data",
+    "product": {
+      "label": "Selected product"
+    },
+    "price": {
+      "label": "Latest price",
+      "date": "May 2026"
+    },
+    "change": {
+      "label": "12-month change",
+      "period": "Since May 2025"
+    }
+  },
+  "products": {
+    "eggs": {
+      "name": "Eggs",
+      "quantity": "1 dozen"
+    }
+  },
   "footer": {
     "dataLabel": "Data",
     "dataSource": "Statistics Canada",

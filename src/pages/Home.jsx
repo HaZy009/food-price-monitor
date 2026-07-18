@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "../components/layout/Header";
 import HeroSection from "../components/layout/HeroSection";
 import Footer from "../components/layout/Footer";
+import StatCards from "../components/cards/StatCards";
 
 import "./Home.css";
 
@@ -19,6 +20,8 @@ function Home() {
             selectedRegion={selectedRegion}
             onRegionChange={setSelectedRegion}
           />
+
+          <StatCards />
         </div>
       </main>
 
