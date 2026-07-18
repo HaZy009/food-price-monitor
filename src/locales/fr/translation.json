@@ -53,8 +53,70 @@
   "products": {
     "eggs": {
       "name": "Œufs",
-      "quantity": "1 douzaine"
+      "quantity": "1 douzaine",
+      "fullName": "Œufs, 1 douzaine"
+    },
+    "butter": {
+      "name": "Beurre",
+      "quantity": "454 grammes",
+      "fullName": "Beurre, 454 grammes"
+    },
+    "groundBeef": {
+      "name": "Bœuf haché",
+      "quantity": "par kilogramme",
+      "fullName": "Bœuf haché, par kilogramme"
+    },
+    "chickenBreasts": {
+      "name": "Poitrines de poulet",
+      "quantity": "par kilogramme",
+      "fullName": "Poitrines de poulet, par kilogramme"
+    },
+    "apples": {
+      "name": "Pommes",
+      "quantity": "par kilogramme",
+      "fullName": "Pommes, par kilogramme"
+    },
+    "tomatoes": {
+      "name": "Tomates",
+      "quantity": "par kilogramme",
+      "fullName": "Tomates, par kilogramme"
+    },
+    "whiteBread": {
+      "name": "Pain blanc",
+      "quantity": "675 grammes",
+      "fullName": "Pain blanc, 675 grammes"
+    },
+    "milk": {
+      "name": "Lait",
+      "quantity": "2 litres",
+      "fullName": "Lait, 2 litres"
+    },
+    "whiteRice": {
+      "name": "Riz blanc",
+      "quantity": "2 kilogrammes",
+      "fullName": "Riz blanc, 2 kilogrammes"
+    },
+    "vegetableOil": {
+      "name": "Huile végétale",
+      "quantity": "3 litres",
+      "fullName": "Huile végétale, 3 litres"
     }
+  },
+  "trend": {
+    "title": "Évolution du prix de {{product}} — {{region}}",
+    "subtitle": "Prix de détail moyen mensuel pour {{quantity}}",
+    "controls": {
+      "productLabel": "Produit alimentaire",
+      "periodLabel": "Période",
+      "compareCanada": "Comparer avec le Canada"
+    },
+    "periods": {
+      "12months": "12 mois",
+      "24months": "24 mois",
+      "fullHistory": "Historique complet"
+    },
+    "summary": "Dans la région {{region}}, le prix moyen de {{product}} pour {{quantity}} est passé de {{previousPrice}} à {{latestPrice}}, soit une hausse de {{change}} % sur 12 mois.",
+    "source": "Source : Statistique Canada, tableau 18-10-0245-01."
   },
   "footer": {
     "dataLabel": "Données",

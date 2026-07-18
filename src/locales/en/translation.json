@@ -53,8 +53,70 @@
   "products": {
     "eggs": {
       "name": "Eggs",
-      "quantity": "1 dozen"
+      "quantity": "1 dozen",
+      "fullName": "Eggs, 1 dozen"
+    },
+    "butter": {
+      "name": "Butter",
+      "quantity": "454 grams",
+      "fullName": "Butter, 454 grams"
+    },
+    "groundBeef": {
+      "name": "Ground beef",
+      "quantity": "per kilogram",
+      "fullName": "Ground beef, per kilogram"
+    },
+    "chickenBreasts": {
+      "name": "Chicken breasts",
+      "quantity": "per kilogram",
+      "fullName": "Chicken breasts, per kilogram"
+    },
+    "apples": {
+      "name": "Apples",
+      "quantity": "per kilogram",
+      "fullName": "Apples, per kilogram"
+    },
+    "tomatoes": {
+      "name": "Tomatoes",
+      "quantity": "per kilogram",
+      "fullName": "Tomatoes, per kilogram"
+    },
+    "whiteBread": {
+      "name": "White bread",
+      "quantity": "675 grams",
+      "fullName": "White bread, 675 grams"
+    },
+    "milk": {
+      "name": "Milk",
+      "quantity": "2 litres",
+      "fullName": "Milk, 2 litres"
+    },
+    "whiteRice": {
+      "name": "White rice",
+      "quantity": "2 kilograms",
+      "fullName": "White rice, 2 kilograms"
+    },
+    "vegetableOil": {
+      "name": "Vegetable oil",
+      "quantity": "3 litres",
+      "fullName": "Vegetable oil, 3 litres"
     }
+  },
+  "trend": {
+    "title": "Price trend for {{product}} — {{region}}",
+    "subtitle": "Monthly average retail price for {{quantity}}",
+    "controls": {
+      "productLabel": "Food product",
+      "periodLabel": "Period",
+      "compareCanada": "Compare with Canada"
+    },
+    "periods": {
+      "12months": "12 months",
+      "24months": "24 months",
+      "fullHistory": "Full history"
+    },
+    "summary": "In {{region}}, the average price of {{product}} for {{quantity}} rose from {{previousPrice}} to {{latestPrice}}, an increase of {{change}}% over 12 months.",
+    "source": "Source: Statistics Canada, Table 18-10-0245-01."
   },
   "footer": {
     "dataLabel": "Data",

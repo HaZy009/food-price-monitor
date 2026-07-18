@@ -1,0 +1,48 @@
+.price-trend-chart {
+  width: 100%;
+  min-width: 0;
+}
+
+.trend-tooltip {
+  min-width: 12rem;
+  padding: 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.trend-tooltip__date {
+  margin: 0 0 0.625rem;
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.trend-tooltip__row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+}
+
+.trend-tooltip__row + .trend-tooltip__row {
+  margin-top: 0.375rem;
+}
+
+.trend-tooltip__row strong {
+  color: var(--color-text);
+}
+
+.trend-tooltip__indicator {
+  width: 0.75rem;
+  height: 0.1875rem;
+  border-radius: 999px;
+  background: var(--color-primary);
+}
+
+.trend-tooltip__indicator--canada {
+  background: var(--color-secondary);
+}

@@ -1,0 +1,66 @@
+.period-selector {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.period-selector__label {
+  margin-bottom: 0.5rem;
+  padding: 0;
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.period-selector__buttons {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+
+.period-selector__button {
+  min-height: 2.875rem;
+  padding: 0.625rem 1rem;
+  border: 0;
+  border-right: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.period-selector__button:last-child {
+  border-right: 0;
+}
+
+.period-selector__button:hover:not(
+    .period-selector__button--active
+  ) {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+.period-selector__button--active {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+@media (max-width: 520px) {
+  .period-selector__buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+
+  .period-selector__button {
+    padding-inline: 0.625rem;
+    white-space: normal;
+  }
+}

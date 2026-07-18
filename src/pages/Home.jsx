@@ -4,6 +4,7 @@ import Header from "../components/layout/Header";
 import HeroSection from "../components/layout/HeroSection";
 import Footer from "../components/layout/Footer";
 import StatCards from "../components/cards/StatCards";
+import PriceTrendSection from "../components/charts/PriceTrendSection";
 
 import "./Home.css";
 
@@ -22,6 +23,8 @@ function Home() {
           />
 
           <StatCards />
+
+          <PriceTrendSection selectedRegion={selectedRegion} />
         </div>
       </main>
 
