@@ -7,9 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "data:download": "node scripts/downloadStatCanData.js",
+    "data:inspect": "node scripts/inspectStatCanData.js",
+    "data:analyze": "node scripts/analyzeStatCanData.js"
   },
   "dependencies": {
+    "adm-zip": "^0.6.0",
+    "csv-parse": "^7.0.1",
     "i18next": "^26.3.6",
     "lucide-react": "^1.25.0",
     "react": "^19.2.7",
