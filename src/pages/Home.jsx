@@ -10,7 +10,7 @@ import "./Home.css";
 
 function Home() {
   const [selectedRegion, setSelectedRegion] = useState("canada");
-  const [selectedProduct, setSelectedProduct] = useState("eggs");
+  const [selectedProduct, setSelectedProduct] = useState("almonds-200-grams");
 
   return (
     <div className="app-shell" id="top">

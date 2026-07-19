@@ -30,11 +30,11 @@ function PriceTrendSection({
   const showCanadaComparison = !isCanadaSelected && compareCanada;
 
   const regionName = t(`regions.${selectedRegion}`);
-  const productName = product
-    ? t(product.nameKey)
-    : t("trend.unavailableProduct");
+  const productParts = product?.name.split(",") ?? [];
 
-  const productQuantity = product ? t(product.quantityKey) : "";
+  const productName = productParts[0]?.trim() || t("trend.unavailableProduct");
+
+  const productQuantity = productParts.slice(1).join(",").trim();
 
   const locale = i18n.resolvedLanguage === "en" ? "en-CA" : "fr-CA";
 

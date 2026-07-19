@@ -10,73 +10,88 @@ import {
 } from "../utils/dataHelpers";
 
 function useFoodData({
-  productId = "eggs",
+  productId = "eggs-1-dozen",
   regionId = "canada",
   period = "12months",
 } = {}) {
-  const product = useMemo(
+  const regions = foodPrices;
+
+  const canadaRegion = useMemo(
     () =>
-      foodPrices.products.find(
-        (currentProduct) => currentProduct.id === productId
-      ) ?? null,
-    [productId]
+      regions.find((currentRegion) => currentRegion.id === "canada") ?? null,
+    [regions],
   );
 
   const region = useMemo(
     () =>
-      foodPrices.regions.find(
-        (currentRegion) => currentRegion.id === regionId
-      ) ?? null,
-    [regionId]
+      regions.find((currentRegion) => currentRegion.id === regionId) ?? null,
+    [regionId, regions],
   );
 
-  const regionSeries = useMemo(() => {
-    const rawSeries =
-      foodPrices.prices?.[productId]?.[regionId] ?? [];
+  const products = useMemo(() => canadaRegion?.products ?? [], [canadaRegion]);
 
-    return convertSeries(rawSeries);
-  }, [productId, regionId]);
+  const product = useMemo(
+    () =>
+      products.find((currentProduct) => currentProduct.id === productId) ??
+      null,
+    [productId, products],
+  );
 
-  const canadaSeries = useMemo(() => {
-    const rawSeries =
-      foodPrices.prices?.[productId]?.canada ?? [];
+  const regionProduct = useMemo(
+    () =>
+      region?.products.find(
+        (currentProduct) => currentProduct.id === productId,
+      ) ?? null,
+    [productId, region],
+  );
 
-    return convertSeries(rawSeries);
-  }, [productId]);
+  const canadaProduct = useMemo(
+    () =>
+      canadaRegion?.products.find(
+        (currentProduct) => currentProduct.id === productId,
+      ) ?? null,
+    [canadaRegion, productId],
+  );
+
+  const regionSeries = useMemo(
+    () => convertSeries(regionProduct?.history ?? []),
+    [regionProduct],
+  );
+
+  const canadaSeries = useMemo(
+    () => convertSeries(canadaProduct?.history ?? []),
+    [canadaProduct],
+  );
 
   const filteredRegionSeries = useMemo(
     () => filterSeriesByPeriod(regionSeries, period),
-    [regionSeries, period]
+    [regionSeries, period],
   );
 
   const filteredCanadaSeries = useMemo(
     () => filterSeriesByPeriod(canadaSeries, period),
-    [canadaSeries, period]
+    [canadaSeries, period],
   );
 
   const chartData = useMemo(
     () =>
-      mergeRegionAndCanadaSeries(
-        filteredRegionSeries,
-        filteredCanadaSeries
-      ),
-    [filteredRegionSeries, filteredCanadaSeries]
+      mergeRegionAndCanadaSeries(filteredRegionSeries, filteredCanadaSeries),
+    [filteredRegionSeries, filteredCanadaSeries],
   );
 
   const latestPoint = useMemo(
     () => getLatestDataPoint(regionSeries),
-    [regionSeries]
+    [regionSeries],
   );
 
   const annualChange = useMemo(
     () => getAnnualChange(regionSeries),
-    [regionSeries]
+    [regionSeries],
   );
 
   return {
-    metadata: foodPrices.metadata,
-    products: foodPrices.products,
-    regions: foodPrices.regions,
+    products,
+    regions,
     product,
     region,
     regionSeries,

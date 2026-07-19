@@ -2,14 +2,13 @@ export function convertSeries(series = []) {
   return series
     .filter(
       (entry) =>
-        Array.isArray(entry) &&
-        entry.length === 2 &&
-        typeof entry[0] === "string" &&
-        typeof entry[1] === "number"
+        entry &&
+        typeof entry.date === "string" &&
+        typeof entry.price === "number",
     )
-    .map(([date, value]) => ({
-      date,
-      value,
+    .map((entry) => ({
+      date: entry.date,
+      value: entry.price,
     }));
 }
 
@@ -56,9 +55,7 @@ export function getAnnualChange(series) {
   }
 
   const change =
-    ((latestPoint.value - previousPoint.value) /
-      previousPoint.value) *
-    100;
+    ((latestPoint.value - previousPoint.value) / previousPoint.value) * 100;
 
   return {
     value: change,
@@ -67,12 +64,9 @@ export function getAnnualChange(series) {
   };
 }
 
-export function mergeRegionAndCanadaSeries(
-  regionSeries,
-  canadaSeries
-) {
+export function mergeRegionAndCanadaSeries(regionSeries, canadaSeries) {
   const canadaPriceByDate = new Map(
-    canadaSeries.map(({ date, value }) => [date, value])
+    canadaSeries.map(({ date, value }) => [date, value]),
   );
 
   return regionSeries.map(({ date, value }) => ({

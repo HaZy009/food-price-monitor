@@ -19,7 +19,7 @@ function ProductSelector({ products, value, onChange }) {
       >
         {products.map((product) => (
           <option key={product.id} value={product.id}>
-            {t(product.fullNameKey)}
+            {product.name}
           </option>
         ))}
       </select>

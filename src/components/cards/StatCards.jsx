@@ -43,11 +43,12 @@ function StatCards({ selectedProduct, selectedRegion }) {
     }).format(new Date(Number(year), Number(month) - 1, 1));
   };
 
-  const productName = product ? t(product.nameKey) : t("stats.unavailable");
+  const productParts = product?.name.split(",") ?? [];
 
-  const productQuantity = product
-    ? t(product.quantityKey)
-    : t("stats.unavailable");
+  const productName = productParts[0]?.trim() || t("stats.unavailable");
+
+  const productQuantity =
+    productParts.slice(1).join(",").trim() || t("stats.unavailable");
 
   const latestPrice =
     hasData && latestPoint
