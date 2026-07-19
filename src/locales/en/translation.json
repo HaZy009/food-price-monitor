@@ -115,7 +115,14 @@
       "24months": "24 months",
       "fullHistory": "Full history"
     },
-    "summary": "In {{region}}, the average price of {{product}} for {{quantity}} rose from {{previousPrice}} to {{latestPrice}}, an increase of {{change}}% over 12 months.",
+    "summary": {
+      "increase": "In {{region}}, the average price of {{product}} for {{quantity}} rose from {{previousPrice}} to {{latestPrice}}, an increase of {{change}}%.",
+      "decrease": "In {{region}}, the average price of {{product}} for {{quantity}} fell from {{previousPrice}} to {{latestPrice}}, a decrease of {{change}}%.",
+      "stable": "In {{region}}, the average price of {{product}} for {{quantity}} remained stable at {{latestPrice}}.",
+      "unavailable": "The annual change cannot be calculated with the available data."
+    },
+    "noData": "No data is available for this selection.",
+    "unavailableProduct": "Unavailable product",
     "source": "Source: Statistics Canada, Table 18-10-0245-01."
   },
   "footer": {

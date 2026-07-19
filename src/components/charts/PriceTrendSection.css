@@ -74,12 +74,20 @@
 
 .trend-section__legend-line--canada {
   height: 0.125rem;
-  background:
-    repeating-linear-gradient(
-      to right,
-      var(--color-secondary) 0 7px,
-      transparent 7px 12px
-    );
+  background: repeating-linear-gradient(
+    to right,
+    var(--color-secondary) 0 7px,
+    transparent 7px 12px
+  );
+}
+
+.trend-section__empty {
+  display: grid;
+  min-height: 22.5rem;
+  place-items: center;
+  padding: var(--spacing-3);
+  color: var(--color-text-secondary);
+  text-align: center;
 }
 
 .trend-section__summary {

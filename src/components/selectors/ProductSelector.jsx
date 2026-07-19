@@ -2,28 +2,12 @@ import { useTranslation } from "react-i18next";
 
 import "./ProductSelector.css";
 
-function ProductSelector({ value, onChange }) {
+function ProductSelector({ products, value, onChange }) {
   const { t } = useTranslation();
-
-  const products = [
-    "eggs",
-    "butter",
-    "groundBeef",
-    "chickenBreasts",
-    "apples",
-    "tomatoes",
-    "whiteBread",
-    "milk",
-    "whiteRice",
-    "vegetableOil"
-  ];
 
   return (
     <div className="product-selector">
-      <label
-        className="product-selector__label"
-        htmlFor="product-select"
-      >
+      <label className="product-selector__label" htmlFor="product-select">
         {t("trend.controls.productLabel")}
       </label>
 
@@ -34,8 +18,8 @@ function ProductSelector({ value, onChange }) {
         onChange={(event) => onChange(event.target.value)}
       >
         {products.map((product) => (
-          <option key={product} value={product}>
-            {t(`products.${product}.fullName`)}
+          <option key={product.id} value={product.id}>
+            {t(product.fullNameKey)}
           </option>
         ))}
       </select>
