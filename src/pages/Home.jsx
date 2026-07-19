@@ -10,6 +10,7 @@ import "./Home.css";
 
 function Home() {
   const [selectedRegion, setSelectedRegion] = useState("canada");
+  const [selectedProduct, setSelectedProduct] = useState("eggs");
 
   return (
     <div className="app-shell" id="top">
@@ -22,9 +23,16 @@ function Home() {
             onRegionChange={setSelectedRegion}
           />
 
-          <StatCards />
+          <StatCards
+            selectedProduct={selectedProduct}
+            selectedRegion={selectedRegion}
+          />
 
-          <PriceTrendSection selectedRegion={selectedRegion} />
+          <PriceTrendSection
+            selectedProduct={selectedProduct}
+            onProductChange={setSelectedProduct}
+            selectedRegion={selectedRegion}
+          />
         </div>
       </main>
 

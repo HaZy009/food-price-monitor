@@ -38,16 +38,17 @@
   },
   "stats": {
     "sectionLabel": "Summary of selected data",
+    "unavailable": "Unavailable",
     "product": {
       "label": "Selected product"
     },
     "price": {
-      "label": "Latest price",
-      "date": "May 2026"
+      "label": "Latest price"
     },
     "change": {
       "label": "12-month change",
-      "period": "Since May 2025"
+      "since": "Since {{date}}",
+      "unavailable": "Insufficient data"
     }
   },
   "products": {

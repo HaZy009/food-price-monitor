@@ -9,10 +9,13 @@ import useFoodData from "../../hooks/useFoodData";
 
 import "./PriceTrendSection.css";
 
-function PriceTrendSection({ selectedRegion }) {
+function PriceTrendSection({
+  selectedProduct,
+  onProductChange,
+  selectedRegion,
+}) {
   const { t, i18n } = useTranslation();
 
-  const [selectedProduct, setSelectedProduct] = useState("eggs");
   const [selectedPeriod, setSelectedPeriod] = useState("12months");
   const [compareCanada, setCompareCanada] = useState(false);
 
@@ -87,7 +90,7 @@ function PriceTrendSection({ selectedRegion }) {
         <ProductSelector
           products={products}
           value={selectedProduct}
-          onChange={setSelectedProduct}
+          onChange={onProductChange}
         />
 
         <PeriodSelector value={selectedPeriod} onChange={setSelectedPeriod} />

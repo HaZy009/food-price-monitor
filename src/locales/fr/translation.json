@@ -38,16 +38,17 @@
   },
   "stats": {
     "sectionLabel": "Résumé des données sélectionnées",
+    "unavailable": "Indisponible",
     "product": {
       "label": "Produit sélectionné"
     },
     "price": {
-      "label": "Prix récent",
-      "date": "Mai 2026"
+      "label": "Prix récent"
     },
     "change": {
       "label": "Variation sur 12 mois",
-      "period": "Depuis mai 2025"
+      "since": "Depuis {{date}}",
+      "unavailable": "Données insuffisantes"
     }
   },
   "products": {
