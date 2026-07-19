@@ -43,3 +43,64 @@ export function buildRegions(records) {
       return firstRegion.name.localeCompare(secondRegion.name, "en");
     });
 }
+
+export function buildRegionProducts(records, regions) {
+  return regions.map((region) => {
+    const regionProducts = [
+      ...new Set(
+        records
+          .filter((record) => record.GEO === region.name)
+          .map((record) => record.Products),
+      ),
+    ]
+      .sort((firstProduct, secondProduct) =>
+        firstProduct.localeCompare(secondProduct, "en"),
+      )
+      .map((productName) => ({
+        id: createSlug(productName),
+        name: productName,
+      }));
+
+    return {
+      ...region,
+      products: regionProducts,
+    };
+  });
+}
+
+export function buildProductHistory(records, regions) {
+  const historyByRegionAndProduct = new Map();
+
+  records.forEach((record) => {
+    const regionId = createSlug(record.GEO);
+    const productId = createSlug(record.Products);
+    const key = `${regionId}::${productId}`;
+
+    if (!historyByRegionAndProduct.has(key)) {
+      historyByRegionAndProduct.set(key, []);
+    }
+
+    historyByRegionAndProduct.get(key).push({
+      date: record.REF_DATE,
+      price: Number(record.VALUE),
+    });
+  });
+
+  return regions.map((region) => ({
+    ...region,
+    products: region.products.map((product) => {
+      const key = `${region.id}::${product.id}`;
+
+      const history = historyByRegionAndProduct.get(key) ?? [];
+
+      history.sort((firstEntry, secondEntry) =>
+        firstEntry.date.localeCompare(secondEntry.date),
+      );
+
+      return {
+        ...product,
+        history,
+      };
+    }),
+  }));
+}

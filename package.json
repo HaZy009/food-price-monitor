@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "data:download": "node scripts/downloadStatCanData.js",
     "data:inspect": "node scripts/inspectStatCanData.js",
-    "data:analyze": "node scripts/analyzeStatCanData.js"
+    "data:analyze": "node scripts/analyzeStatCanData.js",
+    "data:update": "node scripts/updateFoodData.js"
   },
   "dependencies": {
     "adm-zip": "^0.6.0",

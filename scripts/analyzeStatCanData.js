@@ -1,5 +1,10 @@
 import { readTable } from "./lib/readTable.js";
-import { buildRegions, filterRecords } from "./lib/transformRecords.js";
+import {
+  buildProductHistory,
+  buildRegionProducts,
+  buildRegions,
+  filterRecords,
+} from "./lib/transformRecords.js";
 import { TABLE_PID } from "./lib/statCanConfig.js";
 
 function getSortedUniqueValues(records, columnName) {
@@ -127,12 +132,28 @@ function main() {
   const filteredRecords = filterRecords(records);
   const regions = buildRegions(filteredRecords);
 
+  const structuredRegions = buildRegionProducts(filteredRecords, regions);
+
+  const regionsWithHistory = buildProductHistory(
+    filteredRecords,
+    structuredRegions,
+  );
+
+  console.log("\nHistory verification:");
+
+  regionsWithHistory.slice(0, 2).forEach((region) => {
+    const firstProduct = region.products[0];
+
+    console.log(
+      `- ${region.name} | ${firstProduct.name}: ${firstProduct.history.length} months`,
+    );
+  });
   console.log(`Supported regions: ${regions.length}`);
 
   console.log("\nStructured regions:");
 
-  regions.forEach((region) => {
-    console.log(`- ${region.id}: ${region.name}`);
+  structuredRegions.forEach((region) => {
+    console.log(`- ${region.id}: ${region.products.length} products`);
   });
 
   console.log(`Rows after filtering: ${filteredRecords.length}`);
