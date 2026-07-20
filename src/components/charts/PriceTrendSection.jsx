@@ -6,6 +6,7 @@ import PeriodSelector from "../controls/PeriodSelector";
 import ComparisonToggle from "../controls/ComparisonToggle";
 import PriceTrendChart from "./PriceTrendChart";
 import useFoodData from "../../hooks/useFoodData";
+import RegionalPriceChart from "./RegionalPriceChart";
 
 import "./PriceTrendSection.css";
 
@@ -19,12 +20,19 @@ function PriceTrendSection({
   const [selectedPeriod, setSelectedPeriod] = useState("12months");
   const [compareCanada, setCompareCanada] = useState(false);
 
-  const { products, product, chartData, latestPoint, annualChange, hasData } =
-    useFoodData({
-      productId: selectedProduct,
-      regionId: selectedRegion,
-      period: selectedPeriod,
-    });
+  const {
+    products,
+    product,
+    chartData,
+    latestPoint,
+    annualChange,
+    regionalComparisonData,
+    hasData,
+  } = useFoodData({
+    productId: selectedProduct,
+    regionId: selectedRegion,
+    period: selectedPeriod,
+  });
 
   const isCanadaSelected = selectedRegion === "canada";
   const showCanadaComparison = !isCanadaSelected && compareCanada;
@@ -125,6 +133,13 @@ function PriceTrendSection({
           </span>
         </div>
       )}
+
+      <RegionalPriceChart
+        data={regionalComparisonData}
+        selectedRegion={selectedRegion}
+        productName={productName}
+        productQuantity={productQuantity}
+      />
 
       <div className="trend-section__summary">
         {previousPrice != null &&

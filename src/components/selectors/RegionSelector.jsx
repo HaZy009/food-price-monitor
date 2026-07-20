@@ -8,16 +8,16 @@ function RegionSelector({ value, onChange }) {
 
   const regions = [
     "canada",
-    "newfoundlandAndLabrador",
-    "princeEdwardIsland",
-    "novaScotia",
-    "newBrunswick",
+    "newfoundland-and-labrador",
+    "prince-edward-island",
+    "nova-scotia",
+    "new-brunswick",
     "quebec",
     "ontario",
     "manitoba",
     "saskatchewan",
     "alberta",
-    "britishColumbia"
+    "british-columbia",
   ];
 
   return (
@@ -30,18 +30,12 @@ function RegionSelector({ value, onChange }) {
           <MapPin size={18} strokeWidth={2} />
         </span>
 
-        <h2
-          className="region-selector__title"
-          id="region-selector-title"
-        >
+        <h2 className="region-selector__title" id="region-selector-title">
           {t("region.title")}
         </h2>
       </div>
 
-      <label
-        className="region-selector__label"
-        htmlFor="region-select"
-      >
+      <label className="region-selector__label" htmlFor="region-select">
         {t("region.label")}
       </label>
 
@@ -58,9 +52,7 @@ function RegionSelector({ value, onChange }) {
         ))}
       </select>
 
-      <p className="region-selector__description">
-        {t("region.description")}
-      </p>
+      <p className="region-selector__description">{t("region.description")}</p>
     </section>
   );
 }

@@ -6,6 +6,7 @@ import {
   filterSeriesByPeriod,
   getAnnualChange,
   getLatestDataPoint,
+  getRegionalComparisonData,
   mergeRegionAndCanadaSeries,
 } from "../utils/dataHelpers";
 
@@ -89,6 +90,11 @@ function useFoodData({
     [regionSeries],
   );
 
+  const regionalComparisonData = useMemo(
+    () => getRegionalComparisonData(regions, productId, regionId),
+    [productId, regionId, regions],
+  );
+
   return {
     products,
     regions,
@@ -101,6 +107,7 @@ function useFoodData({
     chartData,
     latestPoint,
     annualChange,
+    regionalComparisonData,
     hasData: regionSeries.length > 0,
   };
 }

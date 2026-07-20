@@ -75,3 +75,48 @@ export function mergeRegionAndCanadaSeries(regionSeries, canadaSeries) {
     canadaPrice: canadaPriceByDate.get(date) ?? null,
   }));
 }
+
+export function getRegionalComparisonData(
+  regions,
+  productId,
+  selectedRegionId,
+) {
+  const canadaRegion = regions.find((region) => region.id === "canada");
+
+  const canadaProduct = canadaRegion?.products.find(
+    (product) => product.id === productId,
+  );
+
+  const latestDate = canadaProduct?.history.at(-1)?.date;
+
+  if (!latestDate) {
+    return [];
+  }
+
+  return regions
+    .map((region) => {
+      const product = region.products.find(
+        (currentProduct) => currentProduct.id === productId,
+      );
+
+      const dataPoint = product?.history.find(
+        (entry) => entry.date === latestDate,
+      );
+
+      if (!dataPoint) {
+        return null;
+      }
+
+      return {
+        regionId: region.id,
+        regionName: region.name,
+        price: dataPoint.price,
+        date: dataPoint.date,
+        isSelected: region.id === selectedRegionId,
+      };
+    })
+    .filter(Boolean)
+    .sort((firstRegion, secondRegion) => {
+      return secondRegion.price - firstRegion.price;
+    });
+}

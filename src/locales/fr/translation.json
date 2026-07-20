@@ -25,16 +25,16 @@
   },
   "regions": {
     "canada": "Canada",
-    "newfoundlandAndLabrador": "Terre-Neuve-et-Labrador",
-    "princeEdwardIsland": "Île-du-Prince-Édouard",
-    "novaScotia": "Nouvelle-Écosse",
-    "newBrunswick": "Nouveau-Brunswick",
+    "newfoundland-and-labrador": "Terre-Neuve-et-Labrador",
+    "prince-edward-island": "Île-du-Prince-Édouard",
+    "nova-scotia": "Nouvelle-Écosse",
+    "new-brunswick": "Nouveau-Brunswick",
     "quebec": "Québec",
     "ontario": "Ontario",
     "manitoba": "Manitoba",
     "saskatchewan": "Saskatchewan",
     "alberta": "Alberta",
-    "britishColumbia": "Colombie-Britannique"
+    "british-columbia": "Colombie-Britannique"
   },
   "stats": {
     "sectionLabel": "Résumé des données sélectionnées",
@@ -131,5 +131,15 @@
     "dataSource": "Statistique Canada",
     "universityProject": "Projet universitaire — SEG3525",
     "student": "Joël Normand"
+  },
+  "comparison": {
+    "title": "Comparaison des prix par province",
+    "subtitle": "Prix moyen observé en {{date}}",
+    "productLabel": "Produit :",
+    "axisLabel": "Prix moyen (CAD)",
+    "selectedRegionLegend": "Région sélectionnée",
+    "explanation": "Chaque barre représente le prix moyen du même produit pour le même mois.",
+    "unavailableDate": "Date non disponible",
+    "noData": "Aucune donnée régionale n’est disponible pour ce produit."
   }
 }
