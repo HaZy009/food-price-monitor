@@ -3,14 +3,12 @@ const EXCLUDED_REGIONS = new Set([
   "Yellowknife, Northwest Territories",
 ]);
 
-export function filterRecords(records) {
-  return records.filter((record) => {
-    const hasValue = record.VALUE !== "" && !Number.isNaN(Number(record.VALUE));
+function getRecordValue(record) {
+  return record.VALUE ?? record.VALEUR ?? "";
+}
 
-    const regionSupported = !EXCLUDED_REGIONS.has(record.GEO);
-
-    return hasValue && regionSupported;
-  });
+function getProductName(record) {
+  return record.Products ?? record.Produits ?? "";
 }
 
 function createSlug(value) {
@@ -23,8 +21,55 @@ function createSlug(value) {
     .replace(/^-|-$/g, "");
 }
 
+export function filterRecords(records) {
+  return records.filter((record) => {
+    const rawValue = getRecordValue(record);
+
+    const hasValue =
+      rawValue !== "" && rawValue != null && !Number.isNaN(Number(rawValue));
+
+    const regionSupported = record.GEO && !EXCLUDED_REGIONS.has(record.GEO);
+
+    const hasProduct = Boolean(getProductName(record));
+
+    return hasValue && regionSupported && hasProduct;
+  });
+}
+
+export function buildProductTranslations(englishRecords, frenchRecords) {
+  const frenchProductsByVector = new Map();
+
+  frenchRecords.forEach((record) => {
+    const vector = record.VECTOR;
+    const frenchName = getProductName(record);
+
+    if (vector && frenchName) {
+      frenchProductsByVector.set(vector, frenchName);
+    }
+  });
+
+  const translationsByEnglishName = new Map();
+
+  englishRecords.forEach((record) => {
+    const englishName = getProductName(record);
+    const frenchName = frenchProductsByVector.get(record.VECTOR);
+
+    if (
+      englishName &&
+      frenchName &&
+      !translationsByEnglishName.has(englishName)
+    ) {
+      translationsByEnglishName.set(englishName, frenchName);
+    }
+  });
+
+  return translationsByEnglishName;
+}
+
 export function buildRegions(records) {
-  const regionNames = [...new Set(records.map((record) => record.GEO))];
+  const regionNames = [
+    ...new Set(records.map((record) => record.GEO).filter(Boolean)),
+  ];
 
   return regionNames
     .map((regionName) => ({
@@ -44,21 +89,28 @@ export function buildRegions(records) {
     });
 }
 
-export function buildRegionProducts(records, regions) {
+export function buildRegionProducts(records, regions, productTranslations) {
   return regions.map((region) => {
-    const regionProducts = [
+    const productNames = [
       ...new Set(
         records
           .filter((record) => record.GEO === region.name)
-          .map((record) => record.Products),
+          .map(getProductName)
+          .filter(Boolean),
       ),
-    ]
+    ];
+
+    const regionProducts = productNames
       .sort((firstProduct, secondProduct) =>
         firstProduct.localeCompare(secondProduct, "en"),
       )
-      .map((productName) => ({
-        id: createSlug(productName),
-        name: productName,
+      .map((englishName) => ({
+        id: createSlug(englishName),
+
+        names: {
+          en: englishName,
+          fr: productTranslations.get(englishName) ?? englishName,
+        },
       }));
 
     return {
@@ -73,7 +125,8 @@ export function buildProductHistory(records, regions) {
 
   records.forEach((record) => {
     const regionId = createSlug(record.GEO);
-    const productId = createSlug(record.Products);
+    const productName = getProductName(record);
+    const productId = createSlug(productName);
     const key = `${regionId}::${productId}`;
 
     if (!historyByRegionAndProduct.has(key)) {
@@ -82,12 +135,13 @@ export function buildProductHistory(records, regions) {
 
     historyByRegionAndProduct.get(key).push({
       date: record.REF_DATE,
-      price: Number(record.VALUE),
+      price: Number(getRecordValue(record)),
     });
   });
 
   return regions.map((region) => ({
     ...region,
+
     products: region.products.map((product) => {
       const key = `${region.id}::${product.id}`;
 

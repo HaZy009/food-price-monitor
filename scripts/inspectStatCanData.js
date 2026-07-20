@@ -10,7 +10,7 @@ const currentDirectory = path.dirname(currentFilePath);
 
 const projectRoot = path.resolve(currentDirectory, "..");
 
-const zipFilePath = path.join(projectRoot, "temp", `${TABLE_PID}-eng.zip`);
+const zipFilePath = path.join(projectRoot, "temp", `${TABLE_PID}-fra.zip`);
 
 function findMainCsvEntry(zip) {
   const csvEntries = zip

@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import foodPrices from "../data/foodPrices.json";
 import {
@@ -15,7 +16,11 @@ function useFoodData({
   regionId = "canada",
   period = "12months",
 } = {}) {
+  const { i18n } = useTranslation();
+
   const regions = foodPrices;
+
+  const language = i18n.resolvedLanguage?.startsWith("fr") ? "fr" : "en";
 
   const canadaRegion = useMemo(
     () =>
@@ -29,7 +34,22 @@ function useFoodData({
     [regionId, regions],
   );
 
-  const products = useMemo(() => canadaRegion?.products ?? [], [canadaRegion]);
+  const rawProducts = useMemo(
+    () => canadaRegion?.products ?? [],
+    [canadaRegion],
+  );
+
+  const products = useMemo(
+    () =>
+      rawProducts.map((currentProduct) => ({
+        ...currentProduct,
+        name:
+          currentProduct.names?.[language] ??
+          currentProduct.names?.en ??
+          currentProduct.id,
+      })),
+    [language, rawProducts],
+  );
 
   const product = useMemo(
     () =>
